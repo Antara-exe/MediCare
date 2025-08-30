@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare - AI Medical Assistant</title>
+    <link rel="stylesheet" href="medicare.css">
+    <script src ="medicare.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 MediCare</h1>
+            <p>Your AI-Powered Medical Assistant</p>
+        </div>
+
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showTab('symptom-checker')">🤖 Symptom Checker</button>
+            <button class="nav-tab" onclick="showTab('first-aid')">🚑 First Aid Guide</button>
+            <button class="nav-tab" onclick="showTab('hospital-locator')">🗺️ Hospital Locator</button>
+        </div>
+
+        <div id="symptom-checker" class="tab-content active">
+            <div class="emergency-banner">
+                <strong>⚠️ Emergency? Call 102 (India) immediately for life-threatening conditions!</strong>
+            </div>
+            <h2>AI Symptom Checker</h2>
+            <p>Describe your symptoms and get preliminary guidance. Remember, this is not a substitute for professional medical advice.</p>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message bot-message">
+                        👋 Hello! I'm your AI medical assistant. Please describe your symptoms, and I'll help provide some preliminary guidance. Remember, always consult a healthcare professional for accurate diagnosis and treatment.
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <input type="text" class="chat-input" id="symptom-input" placeholder="Describe your symptoms..." onkeypress="handleSymptomKeyPress(event)">
+                    <button class="send-btn" onclick="processSymptom()">Send</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="first-aid" class="tab-content">
+            <h2>First Aid Guide</h2>
+            <p>Quick access to essential first aid procedures. Click on any situation below:</p>
+            
+            <div class="first-aid-grid">
+                <div class="first-aid-card" onclick="showFirstAid('cpr')">
+                    <h3>💓 CPR</h3>
+                    <p>Cardiopulmonary Resuscitation for cardiac emergencies</p>
+                </div>
+                <div class="first-aid-card" onclick="showFirstAid('choking')">
+                    <h3>🫁 Choking</h3>
+                    <p>Heimlich maneuver and airway clearance</p>
+                </div>
+                <div class="first-aid-card" onclick="showFirstAid('bleeding')">
+                    <h3>🩸 Bleeding</h3>
+                    <p>Control severe bleeding and wound care</p>
+                </div>
+                <div class="first-aid-card" onclick="showFirstAid('burns')">
+                    <h3>🔥 Burns</h3>
+                    <p>Treatment for different types of burns</p>
+                </div>
+                <div class="first-aid-card" onclick="showFirstAid('fractures')">
+                    <h3>🦴 Fractures</h3>
+                    <p>Immobilization and support for broken bones</p>
+                </div>
+                <div class="first-aid-card" onclick="showFirstAid('allergic')">
+                    <h3>🤧 Allergic Reactions</h3>
+                    <p>Managing mild to severe allergic reactions</p>
+                </div>
+            </div>
+            
+            <div id="first-aid-details" style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 15px; display: none;">
+                <div id="first-aid-content"></div>
+            </div>
+        </div>
+
+        <div id="hospital-locator" class="tab-content">
+            <h2>Hospital Locator</h2>
+            <p>Find nearby hospitals and medical facilities</p>
+            
+            <div class="location-controls">
+                <button class="location-btn" onclick="getCurrentLocation()">📍 Use Current Location</button>
+                <input type="text" class="search-input" id="location-search" placeholder="Enter city or address...">
+                <button class="location-btn" onclick="searchLocation()">🔍 Search</button>
+            </div>
+            
+            <div class="map-container" id="map-container">
+                <div style="text-align: center; color: #666;">
+                    🗺️ Click "Use Current Location" or search for a location to view nearby hospitals
+                </div>
+            </div>
+            
+            <div class="hospitals-list" id="hospitals-list"></div>
+        </div>
+    </div>
+</body>
+</html>
